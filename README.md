@@ -10,8 +10,8 @@ There are a few small differences between this tool and the one shipped with ans
 biggest being that it includes its own editor rather than using your system configured
 editor. There are no temporary files containing decrypted plaintext.
 
-When operating on multiple files it is assumed that all the files are encrypted a single
-password key. Files that cannot be verified using that key will be skipped.
+When operating on multiple files it is assumed that all the files are encrypted using a
+single password key. Files that cannot be verified using that key will be skipped.
 
 
 Creating Encrypted Files

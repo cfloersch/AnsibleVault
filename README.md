@@ -24,8 +24,8 @@ ansible-vault create foo.yml
 ```
 
 First you will be prompted for a password. After providing a password, the tool will
-launch its built in editor. Once you are done with the editor session, the file will be
-saved as encrypted data.
+launch its built in editor. Once you are done with the editor session, the data will be
+saved as an encrypted vault file.
 
 
 Editing Encrypted Files

@@ -1,7 +1,8 @@
 # AnsibleVault
 
 This tool is designed to give to windows and mac users the same `ansible-vault` capability
-available to linux users. It is written in Java and requires the unlimited jce policy files.
+available to linux users. It is written in Java and requires the unlimited jce policy files
+and at least Java 1.8.
 
 To install this distribution simply extract the zip file into a directory of your choosing
 and ensure that directory is in your PATH.
@@ -10,10 +11,7 @@ There are a few small differences between this tool and the one shipped with ans
 biggest being that it includes its own editor rather than using your system configured
 editor. There are no temporary files containing decrypted plaintext.
 
-When operating on multiple files it is assumed that all the files are encrypted using a
-single password key. Files that cannot be verified using that key will be skipped.
-
-Current Release Version: 1.0 
+Current Release Version: 1.0
 
 
 Creating Encrypted Files
@@ -25,11 +23,9 @@ To create a new encrypted data file, run the following command:
 ansible-vault create foo.yml
 ```
 
-First you will be prompted for a password. The password used with vault currently must
-be the same for all files you wish to use together at the same time.
-
-After providing a password, the tool will launch its built in editor. Once you are done
-with the editor session, the file will be saved as encrypted data.
+First you will be prompted for a password. After providing a password, the tool will
+launch its built in editor. Once you are done with the editor session, the file will be
+saved as encrypted data.
 
 
 Editing Encrypted Files
@@ -41,6 +37,8 @@ decrypt the file and allow you to edit the file, encrypting and saving it back w
 ```
 ansible-vault edit foo.yml
 ```
+
+The contents of the file are never written to disk in unencrypted form.
 
 
 Rekeying Encrypted Files
@@ -56,6 +54,9 @@ ansible-vault rekey foo.yml bar.yml baz.yml
 This command can rekey multiple data files at once and will ask for the original password
 and also the new password.
 
+When operating on multiple files it is assumed that all the files are encrypted using a
+single password key. Files that cannot be verified using that key will be skipped.
+
 
 Encrypting Unencrypted Files
 ----------------------------
@@ -66,6 +67,11 @@ This command can operate on multiple files at once:
 ```
 ansible-vault encrypt foo.yml bar.yml baz.yml
 ```
+
+When operating on multiple files it is assumed that all the files are encrypted using a
+single password key.
+
+
 
 Decrypting Unencrypted Files
 ----------------------------
@@ -78,6 +84,10 @@ unencrypted to the disk, so be sure you do not want ansible-vault edit instead:
 ansible-vault decrypt foo.yml bar.yml baz.yml
 ```
 
+When operating on multiple files it is assumed that all the files are encrypted using a
+single password key. Files that cannot be verified using that key will be skipped.
+
+
 
 Viewing Encrypted Files
 -----------------------
@@ -88,3 +98,7 @@ ansible-vault view command:
 ```
 ansible-vault view foo.yml bar.yml baz.yml
 ```
+
+When operating on multiple files it is assumed that all the files are encrypted using a
+single password key. Files that cannot be verified using that key will be skipped.
+

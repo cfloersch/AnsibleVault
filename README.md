@@ -13,6 +13,8 @@ editor. There are no temporary files containing decrypted plaintext.
 When operating on multiple files it is assumed that all the files are encrypted using a
 single password key. Files that cannot be verified using that key will be skipped.
 
+Current Release Version: 1.0 
+
 
 Creating Encrypted Files
 ------------------------

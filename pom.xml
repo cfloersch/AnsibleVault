@@ -151,4 +151,18 @@
     </dependencies>
 
 
+    <repositories>
+        <repository>
+            <id>Manheim Cloud Artifactory Pro</id>
+            <url>https://artifactory.aws-dev.manheim.com/artifactory/repo</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Manheim Cloud Artifactory Pro</id>
+            <url>https://artifactory.aws-dev.manheim.com/artifactory/repo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
 </project>

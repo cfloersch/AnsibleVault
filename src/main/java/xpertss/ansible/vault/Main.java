@@ -13,12 +13,16 @@ public class Main {
    public static void main(String[] args) throws Exception
    {
       if(args.length < 2) usage(null);
-      Command cmd = Command.valueOf(args[0]);
-      Security.addProvider(new BouncyCastleProvider());
       try {
-         cmd.execute(process(Arrays.copyOfRange(args, 1, args.length)));
-      } catch(Exception e) {
-         usage(e.getMessage());
+         Command cmd = Command.valueOf(args[0]);
+         Security.addProvider(new BouncyCastleProvider());
+         try {
+            cmd.execute(process(Arrays.copyOfRange(args, 1, args.length)));
+         } catch(Exception e) {
+            usage(e.getMessage());
+         }
+      } catch(IllegalArgumentException e) {
+         usage(null);
       }
       System.exit(0);
    }
@@ -26,6 +30,7 @@ public class Main {
 
    private static Path[] process(String ... files)
    {
+      // TODO Enhance this to handle wildcard patterns
       Path working = Platform.workingDir();
       return Arrays.stream(files).map(file -> working.resolve(file)).toArray(Path[]::new);
    }

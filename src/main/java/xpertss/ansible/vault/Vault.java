@@ -61,7 +61,7 @@ public final class Vault {
    private byte[] decrypt(byte[] pbeKey, byte[] ciphertext) throws Exception
    {
       SecretKey key = createAESKey(pbeKey);
-      Cipher cipher = Cipher.getInstance("AES/CTR/NoPadding", "BC");
+      Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding", "BC");
       cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(pbeKey, 64, 16));
       return cipher.doFinal(ciphertext);
    }
@@ -69,12 +69,12 @@ public final class Vault {
    private byte[] crypt(byte[] pbeKey, byte[] plaintext) throws Exception
    {
       SecretKey key = createAESKey(pbeKey);
-      Cipher cipher = Cipher.getInstance("AES/CTR/NoPadding", "BC");
+      Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding", "BC");
       cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(pbeKey, 64, 16));
       return cipher.doFinal(plaintext);
    }
 
-
+   // AES block size is 128 regardless of key size.
 
    private byte[] generateSalt()
    {

@@ -11,7 +11,8 @@ There are a few small differences between this tool and the one shipped with ans
 biggest being that it includes its own editor rather than using your system configured
 editor. There are no temporary files containing decrypted plaintext.
 
-Current Release Version: 1.0
+Current Release Version: 1.1
+ - Fixes issue with missing cipher text padding.
 
 
 Creating Encrypted Files
